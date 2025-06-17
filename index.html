@@ -1,97 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odoraa - Single Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        header nav a:hover {
-            text-decoration: underline;
-        }
-        .bg-pastel-blue { background-color: #D0E8FF; }
-        .bg-pastel-pink { background-color: #FFE4F2; }
-        .bg-pastel-purple { background-color: #EBDFFF; }
-        nav a {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        nav a:hover {
-            color: #4B5563;
-            transform: scale(1.05);
-        }
-        button {
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        button:hover {
-            background-color: #FDE2E4;
-            transform: translateY(-2px);
-        }
-        section {
-            transition: box-shadow 0.3s ease;
-        }
-        section:hover {
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odoraa - Single Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    nav a {
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav a:hover {
+      color: #1E3A8A;
+      transform: scale(1.05);
+    }
+    button {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    button:hover {
+      background-color: #Dbeafe;
+      transform: translateY(-2px);
+    }
+    section:hover {
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-pastel-purple text-gray-800">
-    <header class="bg-pastel-blue p-6 flex justify-between items-center shadow-lg">
-        <h1 class="text-3xl font-bold flex items-center text-black">
-            Odoraa 🌟
-        </h1>
-        <nav class="space-x-4">
-            <a href="#products" class="hover:underline">Our Products 🛍️</a>
-            <a href="#faqs" class="hover:underline">FAQs ❓</a>
-            <a href="#contact" class="hover:underline">Contact 📞</a>
-            <a href="#about" class="hover:underline">About Us 🌎</a>
-        </nav>
-    </header>
+<body class="bg-white text-black">
 
-    <main class="mt-4 space-y-8">
-        <section id="products" class="p-8 bg-pastel-pink shadow-lg rounded">
-            <h2 class="text-2xl font-bold mb-4">Our Products 🛍️</h2>
-            <ul class="list-disc pl-5 space-y-4">
-                <li><strong>Odoraa for Black Trash Can (100g Pack)</strong> 🗑️ – Trash odors can be overwhelming, but Odoraa ensures your trash can stays fresh every time you open it.</li>
-                <li><strong>Odoraa for Kitchen Trash Can Drawers (100g Pack)</strong> 🍴 – No more unpleasant surprises when opening your trash drawer! Odoraa keeps the space fresh.</li>
-                <li><strong>Odoraa for Kitchen (100g Pack)</strong> 👩‍🍳 – Say goodbye to lingering food odors with Odoraa for Kitchen.</li>
-                <li><strong>Odoraa for Restrooms (100g Pack)</strong> 🚽 – Keep your restroom smelling fresh at all times with Odoraa.</li>
-                <li><strong>Odoraa for Pets (100g Pack)</strong> 🐩 - Love your pets, but not the smell? Let Odoraa keep your space fresh—naturally and safely.</li>
-            </ul>
-            <div class="mt-6">
-                <img src="odoraa-products.jpeg" alt="Odoraa Products" class="w-full max-w-md mx-auto shadow-lg rounded">
-            </div>
-        </section>
+  <!-- Header -->
+  <header class="bg-blue-100 p-8 text-center shadow-md">
+    <h1 class="text-5xl font-extrabold text-blue-900 mb-2 tracking-wide">ODORAA</h1>
+    <nav class="mt-4 space-x-6">
+      <a href="#products" class="text-blue-700 text-lg font-medium hover:underline">Our Products</a>
+      <a href="#faqs" class="text-blue-700 text-lg font-medium hover:underline">FAQs</a>
+      <a href="#contact" class="text-blue-700 text-lg font-medium hover:underline">Contact</a>
+      <a href="#about" class="text-blue-700 text-lg font-medium hover:underline">About Us</a>
+    </nav>
+  </header>
 
-        <section id="faqs" class="p-8 bg-pastel-blue shadow-lg rounded">
-            <h2 class="text-2xl font-bold mb-4">Frequently Asked Questions (FAQ) ❓</h2>
-            <ul class="list-disc pl-5 space-y-4">
-                <li><strong>Q1:</strong> How long does one 100g Odoraa pack last? <br> Each 100g pouch lasts up to 12 months with monthly solar recharging. ☀️</li>
-                <li><strong>Q2:</strong> How many 100g pouches should I use per space? <br> Small area: 1–2 pouches, Medium room: 2–3 pouches, Large spaces: 3–4 pouches. 📏</li>
-                <li><strong>Q3:</strong> What types of odors does Odoraa eliminate? <br> Odoraa is effective against trash, food, restroom, pet smells, and smoke odors. 🚫👃</li>
-                <li><strong>Q4:</strong> Is Odoraa safe for kids and pets? <br> Yes! Odoraa is eco-friendly, non-toxic, and safe to use around children and pets. 🐾👶</li>
-                <li><strong>Q5:</strong> How do I recharge Odoraa? <br> Place the pouch in direct sunlight for 2–3 hours once a month. ☀️</li>
-                <li><strong>Q6:</strong> Where can I place Odoraa? <br> Perfect for trash drawers, restrooms, shoe racks, RVs, closets, and cars. 🚗🏡</li>
-            </ul>
-        </section>
+  <!-- Main Content -->
+  <main class="mt-10 space-y-12 px-6 lg:px-24">
 
-        <section id="contact" class="p-8 bg-pastel-purple shadow-lg rounded">
-            <h2 class="text-2xl font-bold mb-4">Contact Us 📨 </h2>
-            <p>Email: <a href="mailto:heyodoraa@gmail.com" class="text-blue-600 hover:underline">contact@odoraa.com</a></p>
-        </section>
+    <!-- Products -->
+    <section id="products" class="bg-blue-50 p-8 rounded shadow-md">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Our Products 🛍️</h2>
+      <ul class="list-disc pl-6 space-y-4 text-lg">
+        <li><strong>Odoraa for Black Trash Can (100g Pack)</strong> – Trash odors can be overwhelming, but Odoraa ensures your trash can stays fresh every time you open it.</li>
+        <li><strong>Odoraa for Kitchen Trash Can Drawers (100g Pack)</strong> – No more unpleasant surprises when opening your trash drawer! Odoraa keeps the space fresh.</li>
+        <li><strong>Odoraa for Kitchen (100g Pack)</strong> – Say goodbye to lingering food odors with Odoraa for Kitchen.</li>
+        <li><strong>Odoraa for Restrooms (100g Pack)</strong> – Keep your restroom smelling fresh at all times with Odoraa.</li>
+        <li><strong>Odoraa for Pets (100g Pack)</strong> – Love your pets, but not the smell? Let Odoraa keep your space fresh—naturally and safely.</li>
+      </ul>
+      <div class="mt-8">
+        <img src="odoraa-products.jpeg" alt="Odoraa Products" class="w-full max-w-md mx-auto rounded shadow-lg"/>
+      </div>
+    </section>
 
-        <section id="about" class="p-8 bg-pastel-pink shadow-lg rounded">
-            <h2 class="text-2xl font-bold mb-4">About Us 🌎</h2>
-            <p>Breathe Easy. Live Fresh. Welcome to Odoraa — your go-to solution for clean, odor-free spaces without chemicals, sprays, or waste.</p>
-            <p>We’re on a mission to revolutionize freshness at home, on the road, and everywhere in between. Inspired by nature and powered by the sun, Odoraa was born out of a simple idea: sustainable, long-lasting, and eco-friendly odor elimination.</p>
-        </section>
-    </main>
+    <!-- FAQs -->
+    <section id="faqs" class="bg-blue-100 p-8 rounded shadow-md">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Frequently Asked Questions ❓</h2>
+      <ul class="list-disc pl-6 space-y-4 text-lg">
+        <li><strong>Q1:</strong> How long does one 100g Odoraa pack last? <br>Each 100g pouch lasts up to 12 months with monthly solar recharging. ☀️</li>
+        <li><strong>Q2:</strong> How many 100g pouches should I use per space? <br>Small area: 1–2 pouches, Medium room: 2–3 pouches, Large spaces: 3–4 pouches. 📏</li>
+        <li><strong>Q3:</strong> What types of odors does Odoraa eliminate? <br>Odoraa is effective against trash, food, restroom, pet smells, and smoke odors. 🚫👃</li>
+        <li><strong>Q4:</strong> Is Odoraa safe for kids and pets? <br>Yes! Odoraa is eco-friendly, non-toxic, and safe to use around children and pets. 🐾👶</li>
+        <li><strong>Q5:</strong> How do I recharge Odoraa? <br>Place the pouch in direct sunlight for 2–3 hours once a month. ☀️</li>
+        <li><strong>Q6:</strong> Where can I place Odoraa? <br>Perfect for trash drawers, restrooms, shoe racks, RVs, closets, and cars. 🚗🏡</li>
+      </ul>
+    </section>
 
-    <footer class="bg-pastel-blue text-black p-6 mt-4 text-center shadow-lg">
-        &copy; 2025 Odoraa. All Rights Reserved. ✨ Made by KJ ✮
-    </footer>
+    <!-- Contact -->
+    <section id="contact" class="bg-blue-50 p-8 rounded shadow-md">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Contact Us 📨</h2>
+      <p class="text-lg">Email: <a href="mailto:contact@odoraa.com" class="text-blue-600 hover:underline">contact@odoraa.com</a></p>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="bg-blue-100 p-8 rounded shadow-md">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">About Us 🌎</h2>
+      <p class="text-lg mb-2">Breathe Easy. Live Fresh. Welcome to Odoraa — your go-to solution for clean, odor-free spaces without chemicals, sprays, or waste.</p>
+      <p class="text-lg">We’re on a mission to revolutionize freshness at home, on the road, and everywhere in between. Inspired by nature and powered by the sun, Odoraa was born out of a simple idea: sustainable, long-lasting, and eco-friendly odor elimination.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-200 text-black p-6 mt-12 text-center shadow-inner">
+    &copy; 2025 Odoraa. All Rights Reserved. ✨ Made by KJ ✮
+  </footer>
+
 </body>
-</html>""
+</html>
