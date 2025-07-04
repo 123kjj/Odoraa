@@ -54,10 +54,10 @@
 
     <!-- Products -->
     <section id="products" class="bg-blue-50 p-8 rounded shadow-md">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">Our Products 🛍️</h2>
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Our Products 🛜️</h2>
       <p class="text-lg mb-6">Welcome to Odoraa.com – your destination for all-natural, eco-friendly odor eliminators that keep your spaces fresh, clean, and breathable.</p>
       <ul class="list-disc pl-6 space-y-4 text-lg">
-        <li><strong>🥿 Odoraa Shoe Odor Eliminator</strong> – Tackle stinky shoes the natural way! Infused with lemongrass fragrance, this eco-friendly pouch absorbs moisture and odors from all types of footwear. Solar rechargeable and reusable for up to 1 month.</li>
+        <li><strong>🫳 Odoraa Shoe Odor Eliminator</strong> – Tackle stinky shoes the natural way! Infused with lemongrass fragrance, this eco-friendly pouch absorbs moisture and odors from all types of footwear. Solar rechargeable and reusable for up to 1 month.</li>
         <li><strong>🌍 Odoraa for Camping Vans & Travel</strong> – Freshen up your van life! Odoraa for camping vans keeps your vehicle smelling clean even after days on the road. Great for cooking, gear, and restroom odors. Reusable for up to 3 months.</li>
         <li><strong>🎒 Odoraa Dorm Kit</strong> – Dorm life just got a whole lot fresher! This kit includes pouches for trash drawers, bathrooms, shoes, and closets. Long-lasting, solar-powered freshness designed for small spaces. Each pouch lasts up to 3 months.</li>
         <li><strong>🗑️ Odoraa for Black Trash Can (100g Pack)</strong> – Trash odors can be overwhelming, but Odoraa ensures your trash can stays fresh every time you open it. A must-have for kitchens, garages, and outdoor bins. Effective for up to 3 months.</li>
@@ -70,32 +70,50 @@
       <div class="mt-8">
         <img src="odoraa-products.jpeg" alt="Odoraa Products" class="w-full max-w-md mx-auto rounded shadow-lg"/>
       </div>
-      <!-- Dorm Kit Images -->
-<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <img src="images/dorm-kit.jpg" alt="Dorm Kit" class="rounded shadow-md">
-  <img src="images/dorm-kit-1.jpg" alt="Dorm Kit (1)" class="rounded shadow-md">
-  <img src="images/dorm-kit-2.jpg" alt="Dorm Kit (2)" class="rounded shadow-md">
-  <img src="images/dorm-kit-3.jpg" alt="Dorm Kit (3)" class="rounded shadow-md">
-</div>
-    </section>
-    
 
-<!-- FAQs -->
-  <section id="faqs" class="bg-blue-100 p-8 rounded shadow-md">
-    <h2 class="text-3xl font-bold text-blue-800 mb-6">Frequently Asked Questions ❓</h2>
-    <ul class="list-disc pl-6 space-y-4 text-lg">
-      <li><strong>Q1:</strong> How long does one 100g Odoraa pack last? <br>Each 100g pouch lasts up to 3 months (Shoe pouch up to 1 month) with monthly solar recharging. ☀️</li>
-      <li><strong>Q2:</strong> How many 100g pouches should I use per space? <br>
-        Small area: 1–2 pouches<br>
-        Medium room: 2–3 pouches<br>
-        Large spaces or RVs: 3–4 pouches 📏
-      </li>
-      <li><strong>Q3:</strong> What types of odors does Odoraa help absorb? <br>Odoraa is effective against odors from trash, food, restrooms, pets, shoes, and more. 🚫👃</li>
-      <li><strong>Q4:</strong> Is Odoraa safe for kids and pets? <br>Yes! Odoraa is made from natural, non-toxic ingredients and is safe around children and pets. 🐾👶</li>
-      <li><strong>Q5:</strong> How do I recharge Odoraa? <br>Place the pouch in direct sunlight for 2–3 hours once a month to maintain freshness. ☀️</li>
-      <li><strong>Q6:</strong> Where can I place Odoraa? <br>Ideal for kitchen drawers, restrooms, dorm rooms, closets, shoes, RVs, and cars. 🏡🚗</li>
-    </ul>
-  </section>
+      <!-- Dorm Kit Carousel -->
+      <div x-data="{ current: 0, images: ['images/dorm-kit.jpg', 'images/dorm-kit-1.jpg', 'images/dorm-kit-2.jpg', 'images/dorm-kit-3.jpg'] }" class="relative mt-8 max-w-2xl mx-auto">
+        <div class="overflow-hidden rounded shadow-md">
+          <template x-for="(image, index) in images" :key="index">
+            <img
+              x-show="current === index"
+              :src="image"
+              alt="Dorm Kit Image"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out"
+            />
+          </template>
+        </div>
+        <button @click="current = (current === 0) ? images.length - 1 : current - 1"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-md text-blue-700">
+          &#8592;
+        </button>
+        <button @click="current = (current === images.length - 1) ? 0 : current + 1"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-md text-blue-700">
+          &#8594;
+        </button>
+        <div class="flex justify-center mt-4 space-x-2">
+          <template x-for="(image, index) in images" :key="index">
+            <div @click="current = index"
+                 :class="{ 'bg-blue-600': current === index, 'bg-gray-300': current !== index }"
+                 class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="faqs" class="bg-blue-100 p-8 rounded shadow-md">
+      <h2 class="text-3xl font-bold text-blue-800 mb-6">Frequently Asked Questions ❓</h2>
+      <ul class="list-disc pl-6 space-y-4 text-lg">
+        <li><strong>Q1:</strong> How long does one 100g Odoraa pack last? <br>Each 100g pouch lasts up to 3 months (Shoe pouch up to 1 month) with monthly solar recharging. ☀️</li>
+        <li><strong>Q2:</strong> How many 100g pouches should I use per space? <br>Small area: 1–2 pouches<br>Medium room: 2–3 pouches<br>Large spaces or RVs: 3–4 pouches 📏</li>
+        <li><strong>Q3:</strong> What types of odors does Odoraa help absorb? <br>Odoraa is effective against odors from trash, food, restrooms, pets, shoes, and more. ❌👃</li>
+        <li><strong>Q4:</strong> Is Odoraa safe for kids and pets? <br>Yes! Odoraa is made from natural, non-toxic ingredients and is safe around children and pets. 🐿👶</li>
+        <li><strong>Q5:</strong> How do I recharge Odoraa? <br>Place the pouch in direct sunlight for 2–3 hours once a month to maintain freshness. ☀️</li>
+        <li><strong>Q6:</strong> Where can I place Odoraa? <br>Ideal for kitchen drawers, restrooms, dorm rooms, closets, shoes, RVs, and cars. 🏡🚗</li>
+      </ul>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="bg-blue-50 p-8 rounded shadow-md">
       <h2 class="text-3xl font-bold text-blue-800 mb-6">Contact Us 📨</h2>
