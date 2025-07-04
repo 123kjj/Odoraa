@@ -67,18 +67,15 @@
         <li><strong>🐾 Odoraa for Pets (100g Pack)</strong> – Love your pets, but not the smell? Let Odoraa keep your space fresh—naturally and safely. Perfect for litter areas, pet beds, and around feeding zones. Reusable for up to 3 months.</li>
       </ul>
       <p class="text-lg mt-6">All products are solar rechargeable, eco-friendly, safe for families, and reusable.</p>
-      <div class="mt-8">
-        <img src="odoraa-products.jpeg" alt="Odoraa Products" class="w-full max-w-md mx-auto rounded shadow-lg"/>
-      </div>
 
-      <!-- Dorm Kit Carousel -->
-      <div x-data="{ current: 0, images: ['images/dorm-kit.jpg', 'images/dorm-kit-1.jpg', 'images/dorm-kit-2.jpg', 'images/dorm-kit-3.jpg'] }" class="relative mt-8 max-w-2xl mx-auto">
+      <!-- Product Carousel -->
+      <div x-data="{ current: 0, images: ['odoraa-products.jpeg', 'images/Dorm Kit.jpg', 'images/Dorm Kit(1).jpg', 'images/Dorm Kit(3).jpg', 'images/Dorm Kit(2).jpg'] }" class="relative mt-8 max-w-2xl mx-auto">
         <div class="overflow-hidden rounded shadow-md">
           <template x-for="(image, index) in images" :key="index">
             <img
               x-show="current === index"
               :src="image"
-              alt="Dorm Kit Image"
+              alt="Odoraa Product Image"
               class="w-full h-64 object-cover transition duration-300 ease-in-out"
             />
           </template>
