@@ -10,53 +10,216 @@
     html {
       scroll-behavior: smooth;
     }
+    body {
+      font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+    header nav a {
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-weight: 600;
+      font-size: 1.125rem; /* 18px */
+      letter-spacing: 0.02em;
+      color: #2563eb; /* Tailwind blue-700 */
+    }
     header nav a:hover {
       text-decoration: underline;
+      color: #1e40af; /* Tailwind blue-900 */
+      transform: scale(1.1);
     }
-    nav a {
-      transition: color 0.3s ease, transform 0.3s ease;
+    header {
+      background-color: #bfdbfe; /* blue-100 */
+      padding: 3rem 1rem;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+      text-align: center;
     }
-    nav a:hover {
-      color: #1E3A8A;
-      transform: scale(1.05);
+    header h1 {
+      font-size: 4.5rem; /* larger */
+      font-weight: 900;
+      color: #1e40af; /* blue-900 */
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+    header p.catchphrase {
+      color: #1e40af;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0;
+      letter-spacing: 0.08em;
+    }
+    main {
+      margin-top: 3rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    section {
+      background-color: #eff6ff; /* blue-50 or blue-100 depending */
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
+    }
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e40af; /* blue-800 */
+      margin-bottom: 1.5rem;
+    }
+    section p, section li {
+      font-size: 1.125rem;
+      color: #1e3a8a; /* blue-800 */
+    }
+    ul {
+      margin-left: 1.25rem;
+      list-style-type: disc;
+      margin-bottom: 1.5rem;
     }
     button {
       transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
     }
     button:hover {
-      background-color: #Dbeafe;
+      background-color: #dbeafe; /* blue-100 */
       transform: translateY(-2px);
     }
-    section:hover {
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    /* Bigger carousel */
+    .carousel-container {
+      width: 480px; /* bigger width */
+      height: 480px; /* bigger height */
+      margin: 2rem auto 0 auto;
+      position: relative;
     }
-    body {
-      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    .carousel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+      transition: opacity 0.3s ease-in-out;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255 255 255 / 0.85);
+      padding: 0.7rem 1rem;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 1.75rem;
+      user-select: none;
+    }
+    .carousel-button:hover {
+      background-color: rgba(255 255 255 / 1);
+    }
+    .carousel-button-left {
+      left: 0.5rem;
+    }
+    .carousel-button-right {
+      right: 0.5rem;
+    }
+    .carousel-indicators {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      background-color: #d1d5db; /* gray-300 */
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .indicator-dot.active {
+      background-color: #2563eb; /* blue-600 */
+    }
+    /* Buy Now button */
+    .btn-buy {
+      background-color: #2563eb;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 0.75rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgb(37 99 235 / 0.6);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-buy:hover {
+      background-color: #1d4ed8;
+      box-shadow: 0 8px 18px rgb(29 78 216 / 0.8);
+    }
+    footer {
+      background-color: #93c5fd; /* blue-300 */
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: inset 0 2px 8px rgb(0 0 0 / 0.1);
+      color: #000000;
+      border-radius: 0 0 12px 12px;
+      margin-top: 4rem;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .carousel-container {
+        width: 100%;
+        height: 300px;
+      }
+      header h1 {
+        font-size: 3rem;
+        letter-spacing: 0.1em;
+      }
+      header p.catchphrase {
+        font-size: 1.25rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
-<body class="bg-white text-black">
+<body>
 
   <!-- Header -->
-  <header class="bg-blue-100 p-8 text-center shadow-md">
-    <h1 class="text-5xl font-extrabold text-blue-900 mb-2 tracking-wide">ODORAA</h1>
+  <header>
+    <h1>ODORAA</h1>
+    <p class="catchphrase">Breathe Fresh. Breathe Easy.</p>
     <nav class="mt-4 space-x-6">
-      <a href="#products" class="text-blue-700 text-lg font-medium hover:underline">Our Products</a>
-      <a href="#faqs" class="text-blue-700 text-lg font-medium hover:underline">FAQs</a>
-      <a href="#contact" class="text-blue-700 text-lg font-medium hover:underline">Contact</a>
-      <a href="#about" class="text-blue-700 text-lg font-medium hover:underline">About Us</a>
-      <a href="#buy" class="text-blue-700 text-lg font-medium hover:underline">Buy Now</a>
+      <a href="#products">Our Products</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About Us</a>
+      <a href="#buy">Buy Now</a>
     </nav>
   </header>
 
+  <!-- Welcome Section ABOVE Products -->
+  <section id="welcome" style="background-color:#eff6ff; border-radius:12px; padding:2rem 1.5rem; max-width:960px; margin: 2rem auto;">
+    <p style="font-size:1.25rem; color:#1e40af; font-weight:600; text-align:center; max-width:800px; margin-left:auto; margin-right:auto;">
+      Welcome to Odoraa.com – your destination for all-natural, eco-friendly odor eliminators that keep your spaces fresh, clean, and breathable.
+    </p>
+  </section>
+
   <!-- Main Content -->
-  <main class="mt-10 space-y-12 px-6 lg:px-24">
+  <main>
 
     <!-- Products -->
-    <section id="products" class="bg-blue-50 p-8 rounded shadow-md">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">Our Products 🛜️</h2>
-      <p class="text-lg mb-6">Welcome to Odoraa.com – your destination for all-natural, eco-friendly odor eliminators that keep your spaces fresh, clean, and breathable.</p>
-      <ul class="list-disc pl-6 space-y-4 text-lg">
+    <section id="products" style="background-color:#eff6ff;">
+      <h2>Our Products 🧴</h2> <!-- Changed emoji to 🧴 (bottle) -->
+      <ul>
         <li><strong>🫳 Odoraa Shoe Odor Eliminator</strong> – Tackle stinky shoes the natural way! Infused with lemongrass fragrance, this eco-friendly pouch absorbs moisture and odors from all types of footwear. Solar rechargeable and reusable for up to 1 month.</li>
         <li><strong>🌍 Odoraa for Camping Vans & Travel</strong> – Freshen up your van life! Odoraa for camping vans keeps your vehicle smelling clean even after days on the road. Great for cooking, gear, and restroom odors. Reusable for up to 3 months.</li>
         <li><strong>🎒 Odoraa Dorm Kit</strong> – Dorm life just got a whole lot fresher! This kit includes pouches for trash drawers, bathrooms, shoes, and closets. Long-lasting, solar-powered freshness designed for small spaces. Each pouch lasts up to 3 months.</li>
@@ -66,62 +229,58 @@
         <li><strong>🚽 Odoraa for Restrooms (100g Pack)</strong> – Keep your restroom smelling fresh at all times with Odoraa. Absorbs odors from bins, air, and moisture-prone areas. Lasts up to 3 months.</li>
         <li><strong>🐾 Odoraa for Pets (100g Pack)</strong> – Love your pets, but not the smell? Let Odoraa keep your space fresh—naturally and safely. Perfect for litter areas, pet beds, and around feeding zones. Reusable for up to 3 months.</li>
       </ul>
-      <p class="text-lg mt-6">All products are solar rechargeable, eco-friendly, safe for families, and reusable.</p>
+      <p>All products are solar rechargeable, eco-friendly, safe for families, and reusable.</p>
 
       <!-- Product Carousel -->
-<div x-data="{ 
-      current: 0, 
-      images: ['odoraa-products.jpeg', 'Dorm Kit.jpg', 'Dorm Kit (1).jpg', 'Dorm Kit (3).jpg', 'Dorm Kit (2).jpg'],
-      prev() { this.current = (this.current === 0) ? this.images.length - 1 : this.current - 1 },
-      next() { this.current = (this.current === this.images.length - 1) ? 0 : this.current + 1 }
-    }" 
-    class="relative mt-8 w-80 h-80 mx-auto"
-    @keydown.arrow-left.window.prevent="prev()"
-    @keydown.arrow-right.window.prevent="next()"
-    tabindex="0"
-    >
+      <div 
+        x-data="{ 
+          current: 0, 
+          images: ['odoraa-products.jpeg', 'Dorm Kit.jpg', 'Dorm Kit (1).jpg', 'Dorm Kit (3).jpg', 'Dorm Kit (2).jpg'],
+          prev() { this.current = (this.current === 0) ? this.images.length - 1 : this.current - 1 },
+          next() { this.current = (this.current === this.images.length - 1) ? 0 : this.current + 1 }
+        }" 
+        class="carousel-container"
+        @keydown.arrow-left.window.prevent="prev()"
+        @keydown.arrow-right.window.prevent="next()"
+        tabindex="0"
+      >
+        <template x-for="(image, index) in images" :key="index">
+          <img
+            x-show="current === index"
+            :src="image"
+            alt="Odoraa Product Image"
+            class="carousel-image"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+          />
+        </template>
 
-  <div class="overflow-hidden rounded shadow-md w-full h-full">
-    <template x-for="(image, index) in images" :key="index">
-      <img
-        x-show="current === index"
-        :src="image"
-        alt="Odoraa Product Image"
-        class="w-full h-full object-cover transition-opacity duration-300 ease-in-out"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-      />
-    </template>
-  </div>
+        <button @click="prev()" class="carousel-button carousel-button-left" aria-label="Previous Image">&#8592;</button>
+        <button @click="next()" class="carousel-button carousel-button-right" aria-label="Next Image">&#8594;</button>
 
-  <button @click="prev()"
-          class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-md text-blue-700">
-    &#8592;
-  </button>
-  <button @click="next()"
-          class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-md text-blue-700">
-    &#8594;
-  </button>
-
-  <div class="flex justify-center mt-4 space-x-2">
-    <template x-for="(image, index) in images" :key="index">
-      <div @click="current = index"
-           :class="{ 'bg-blue-600': current === index, 'bg-gray-300': current !== index }"
-           class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ease-in-out"></div>
-    </template>
-  </div>
-</div>
-
+        <div class="carousel-indicators" aria-label="Carousel Navigation Dots">
+          <template x-for="(image, index) in images" :key="index">
+            <div 
+              @click="current = index" 
+              :class="{'indicator-dot': true, 'active': current === index}" 
+              role="button" 
+              tabindex="0" 
+              :aria-pressed="current === index"
+              :aria-label="`View image ${index + 1}`"
+            ></div>
+          </template>
+        </div>
+      </div>
     </section>
 
     <!-- FAQs -->
-    <section id="faqs" class="bg-blue-100 p-8 rounded shadow-md">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">Frequently Asked Questions ❓</h2>
-      <ul class="list-disc pl-6 space-y-4 text-lg">
+    <section id="faqs" style="background-color:#dbeafe;">
+      <h2>Frequently Asked Questions ❓</h2>
+      <ul>
         <li><strong>Q1:</strong> How long does one 100g Odoraa pack last? <br>Each 100g pouch lasts up to 3 months (Shoe pouch up to 1 month) with monthly solar recharging. ☀️</li>
         <li><strong>Q2:</strong> How many 100g pouches should I use per space? <br>Small area: 1–2 pouches<br>Medium room: 2–3 pouches<br>Large spaces or RVs: 3–4 pouches 📏</li>
         <li><strong>Q3:</strong> What types of odors does Odoraa help absorb? <br>Odoraa is effective against odors from trash, food, restrooms, pets, shoes, and more. ❌👃</li>
@@ -132,29 +291,29 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="bg-blue-50 p-8 rounded shadow-md">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">Contact Us 📨</h2>
-      <p class="text-lg">Email: <a href="mailto:heyodoraa@gmail.com" class="text-blue-600 hover:underline">heyodoraa@gmail.com</a></p>
+    <section id="contact" style="background-color:#eff6ff;">
+      <h2>Contact Us 📨</h2>
+      <p>Email: <a href="mailto:heyodoraa@gmail.com" class="text-blue-600 hover:underline">heyodoraa@gmail.com</a></p>
     </section>
 
     <!-- About -->
-    <section id="about" class="bg-blue-100 p-8 rounded shadow-md">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">About Us 🌎</h2>
-      <p class="text-lg mb-2">Breathe Easy. Live Fresh. Welcome to Odoraa — your go-to solution for clean, odor-free spaces without chemicals, sprays, or waste.</p>
-      <p class="text-lg">We’re on a mission to revolutionize freshness at home, on the road, and everywhere in between. Inspired by nature and powered by the sun, Odoraa was born out of a simple idea: sustainable, long-lasting, and eco-friendly odor elimination.</p>
+    <section id="about" style="background-color:#dbeafe;">
+      <h2>About Us 🌎</h2>
+      <p>Breathe Easy. Live Fresh. Welcome to Odoraa — your go-to solution for clean, odor-free spaces without chemicals, sprays, or waste.</p>
+      <p>We’re on a mission to revolutionize freshness at home, on the road, and everywhere in between. Inspired by nature and powered by the sun, Odoraa was born out of a simple idea: sustainable, long-lasting, and eco-friendly odor elimination.</p>
     </section>
 
     <!-- Buy Now -->
-    <section id="buy" class="bg-blue-50 p-8 rounded shadow-md text-center">
-      <h2 class="text-3xl font-bold text-blue-800 mb-6">Buy Now 🛒</h2>
-      <p class="text-lg mb-4">Get your Odoraa Essentials Pack on Amazon:</p>
-      <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-blue-800 transition">Shop on Amazon</a>
+    <section id="buy" style="background-color:#eff6ff; text-align:center;">
+      <h2>Buy Now 🛒</h2>
+      <p>Get your Odoraa Essentials Pack on Amazon:</p>
+      <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN" target="_blank" rel="noopener noreferrer" class="btn-buy">Shop on Amazon</a>
     </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="bg-blue-200 text-black p-6 mt-12 text-center shadow-inner">
+  <footer>
     &copy; 2025 Odoraa. All Rights Reserved. ✨ Made by KJ ✮
   </footer>
 
