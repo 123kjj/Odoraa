@@ -17,38 +17,61 @@
       color: #000000;
       line-height: 1.6;
     }
-    header nav a {
-      transition: color 0.3s ease, transform 0.3s ease;
-      font-weight: 600;
-      font-size: 1.125rem;
-      letter-spacing: 0.02em;
-      color: #2563eb;
-    }
-    header nav a:hover {
-      text-decoration: underline;
-      color: #1e40af;
-      transform: scale(1.1);
-    }
+
+    /* Header with background image */
     header {
-      background-color: #bfdbfe;
+      background: url('bg_odoraa.jpg') center center / cover no-repeat;
       padding: 3rem 1rem;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
       text-align: center;
+      position: relative;
+      color: #ffffff;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+      z-index: 0;
+      border-radius: 0 0 12px 12px;
+    }
+
+    header h1,
+    header p.catchphrase,
+    header nav {
+      position: relative;
+      z-index: 1;
+    }
+
     header h1 {
       font-size: 4.5rem;
       font-weight: 900;
-      color: #1e40af;
       letter-spacing: 0.15em;
       margin-bottom: 0.25rem;
     }
+
     header p.catchphrase {
-      color: #1e40af;
       font-size: 1.5rem;
       font-weight: 600;
       margin-top: 0;
       letter-spacing: 0.08em;
     }
+
+    header nav a {
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: 0.02em;
+      color: #e0f2fe;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
     main {
       margin-top: 3rem;
       max-width: 960px;
@@ -57,6 +80,7 @@
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
+
     section {
       background-color: #eff6ff;
       border-radius: 12px;
@@ -65,38 +89,46 @@
       box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
       transition: box-shadow 0.3s ease;
     }
+
     section:hover {
       box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
     }
+
     section h2 {
       font-size: 2.5rem;
       font-weight: 700;
       color: #1e40af;
       margin-bottom: 1.5rem;
     }
+
     section p, section li {
       font-size: 1.125rem;
       color: #1e3a8a;
     }
+
     ul {
       margin-left: 1.25rem;
       list-style-type: disc;
       margin-bottom: 1.5rem;
     }
+
     button {
       transition: background-color 0.3s ease, transform 0.3s ease;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #dbeafe;
       transform: translateY(-2px);
     }
+
     .carousel-container {
       width: 480px;
       height: 480px;
       margin: 2rem auto 0 auto;
       position: relative;
     }
+
     .carousel-image {
       width: 100%;
       height: 100%;
@@ -105,6 +137,7 @@
       box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
       transition: opacity 0.3s ease-in-out;
     }
+
     .carousel-button {
       position: absolute;
       top: 50%;
@@ -118,21 +151,26 @@
       font-size: 1.75rem;
       user-select: none;
     }
+
     .carousel-button:hover {
       background-color: rgba(255 255 255 / 1);
     }
+
     .carousel-button-left {
       left: 0.5rem;
     }
+
     .carousel-button-right {
       right: 0.5rem;
     }
+
     .carousel-indicators {
       margin-top: 1.25rem;
       display: flex;
       justify-content: center;
       gap: 0.75rem;
     }
+
     .indicator-dot {
       width: 12px;
       height: 12px;
@@ -141,9 +179,11 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     .indicator-dot.active {
       background-color: #2563eb;
     }
+
     .btn-buy {
       background-color: #2563eb;
       color: white;
@@ -156,10 +196,12 @@
       display: inline-block;
       text-decoration: none;
     }
+
     .btn-buy:hover {
       background-color: #1d4ed8;
       box-shadow: 0 8px 18px rgb(29 78 216 / 0.8);
     }
+
     footer {
       background-color: #93c5fd;
       padding: 1.5rem 1rem;
@@ -170,6 +212,7 @@
       border-radius: 0 0 12px 12px;
       margin-top: 4rem;
     }
+
     @media (max-width: 640px) {
       .carousel-container {
         width: 100%;
@@ -188,6 +231,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
