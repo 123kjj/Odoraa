@@ -32,7 +32,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+      background: rgba(0, 0, 0, 0.4);
       z-index: 0;
       border-radius: 0 0 12px 12px;
     }
@@ -268,11 +268,20 @@
       </ul>
       <p>All products are solar rechargeable, eco-friendly, safe for families, and reusable.</p>
 
-      <!-- Carousel -->
+      <!-- Carousel + Gallery -->
       <div 
         x-data="{ 
           current: 0, 
-          images: ['odoraa-products.jpeg', 'Dorm Kit.jpg', 'Dorm Kit (1).jpg', 'Dorm Kit (3).jpg', 'Dorm Kit (2).jpg'],
+          images: [
+            'odoraa-products.jpeg',
+            'Dorm Kit.jpg',
+            'Dorm Kit (1).jpg',
+            'Dorm Kit (2).jpg',
+            'Dorm Kit (3).jpg',
+            'Dorm Kit (19).png',
+            'Dorm Kit (A4).jpg',
+            'Odoraa_2.jpg'
+          ],
           prev() { this.current = (this.current === 0) ? this.images.length - 1 : this.current - 1 },
           next() { this.current = (this.current === this.images.length - 1) ? 0 : this.current + 1 }
         }" 
@@ -281,6 +290,7 @@
         @keydown.arrow-right.window.prevent="next()"
         tabindex="0"
       >
+        <!-- Carousel -->
         <template x-for="(image, index) in images" :key="index">
           <img
             x-show="current === index"
@@ -311,6 +321,15 @@
             ></div>
           </template>
         </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8">
+        <template x-for="(image, index) in images" :key="`gallery-${index}`">
+          <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+            <img :src="image" alt="Odoraa Gallery Image" class="w-full h-48 object-cover"/>
+          </div>
+        </template>
       </div>
     </section>
 
