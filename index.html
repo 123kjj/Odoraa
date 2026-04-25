@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,219 +6,235 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Odoraa - Single Page</title>
   <link rel="icon" type="image/png" href="odoraa-logo.png">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
-
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
       background-color: #ffffff;
-      color: #000;
+      color: #000000;
+      line-height: 1.6;
     }
 
     header {
-      background: url('bg_odoraa.jpg') center/cover no-repeat;
+      background: url('bg_odoraa.jpg') center center / cover no-repeat;
       padding: 3rem 1rem;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
       text-align: center;
-      color: white;
       position: relative;
+      color: #ffffff;
     }
 
     header::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+      border-radius: 0 0 12px 12px;
     }
 
-    header * { position: relative; z-index: 1; }
+    header h1,
+    header p.catchphrase,
+    header nav {
+      position: relative;
+      z-index: 1;
+    }
 
-    header h1 { font-size: 4rem; font-weight: 900; }
-    header p { font-size: 1.3rem; }
+    header h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p.catchphrase {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0;
+      letter-spacing: 0.08em;
+    }
+
+    header nav a {
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: 0.02em;
+      color: #e0f2fe;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    main {
+      margin-top: 3rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
 
     section {
-      background: #eff6ff;
-      padding: 2rem;
-      margin: 2rem auto;
-      max-width: 960px;
+      background-color: #eff6ff;
       border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+      transition: box-shadow 0.3s ease;
     }
 
-    h2 { font-size: 2rem; color: #1e40af; font-weight: bold; }
-
-    .btn-buy {
-      background: #2563eb;
-      color: white;
-      padding: 0.7rem 2rem;
-      border-radius: 10px;
-      display: inline-block;
+    section:hover {
+      box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
     }
 
-    .carousel-container { width: 400px; margin: auto; }
-    .carousel-image { width: 100%; border-radius: 10px; }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>ODORAA</h1>
-  <p>Breathe Fresh. Breathe Easy.</p>
-  <nav>
-    <a href="#products">Products</a> |
-    <a href="#faqs">FAQs</a> |
-    <a href="#contact">Contact</a> |
-    <a href="#about">About</a> |
-    <a href="#buy">Buy</a>
-  </nav>
-</header>
-
-<section>
-  <p style="text-align:center; font-weight:600;">
-    Welcome to Odoraa – eco-friendly odor eliminators for a fresher home.
-  </p>
-</section>
-
-<main>
-
-<section id="products">
-  <h2>Our Products</h2>
-  <ul>
-    <li>Odoraa Shoe Odor Eliminator</li>
-    <li>Odoraa Dorm Kit</li>
-    <li>Odoraa Trash Can Solution</li>
-    <li>Odoraa for Pets</li>
-  </ul>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Odoraa - Single Page</title>
-  <link rel="icon" type="image/png" href="odoraa-logo.png">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #000;
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 1.5rem;
     }
 
-    header {
-      background: url('bg_odoraa.jpg') center/cover no-repeat;
-      padding: 3rem 1rem;
-      text-align: center;
-      color: white;
+    section p, section li {
+      font-size: 1.125rem;
+      color: #1e3a8a;
+    }
+
+    ul {
+      margin-left: 1.25rem;
+      list-style-type: disc;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #dbeafe;
+      transform: translateY(-2px);
+    }
+
+    .carousel-container {
+      width: 480px;
+      height: 480px;
+      margin: 2rem auto 0 auto;
       position: relative;
     }
 
-    header::before {
-      content: '';
+    .carousel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+      transition: opacity 0.3s ease-in-out;
+      background-color: #fff;
+    }
+
+    .carousel-button {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255 255 255 / 0.85);
+      padding: 0.7rem 1rem;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 1.75rem;
+      user-select: none;
     }
 
-    header * { position: relative; z-index: 1; }
-
-    header h1 { font-size: 4rem; font-weight: 900; }
-    header p { font-size: 1.3rem; }
-
-    section {
-      background: #eff6ff;
-      padding: 2rem;
-      margin: 2rem auto;
-      max-width: 960px;
-      border-radius: 12px;
+    .carousel-button-left {
+      left: 0.5rem;
     }
 
-    h2 { font-size: 2rem; color: #1e40af; font-weight: bold; }
+    .carousel-button-right {
+      right: 0.5rem;
+    }
+
+    .carousel-indicators {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      background-color: #d1d5db;
+      cursor: pointer;
+    }
+
+    .indicator-dot.active {
+      background-color: #2563eb;
+    }
 
     .btn-buy {
-      background: #2563eb;
+      background-color: #2563eb;
       color: white;
-      padding: 0.7rem 2rem;
-      border-radius: 10px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 0.75rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgb(37 99 235 / 0.6);
       display: inline-block;
       text-decoration: none;
     }
+
+    footer {
+      background-color: #93c5fd;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #000000;
+      border-radius: 0 0 12px 12px;
+      margin-top: 4rem;
+    }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>ODORAA</h1>
-  <p>Breathe Fresh. Breathe Easy.</p>
-  <nav>
-    <a href="#products">Products</a> |
-    <a href="#faqs">FAQs</a> |
-    <a href="#contact">Contact</a> |
-    <a href="#about">About</a> |
-    <a href="#buy">Buy</a>
-  </nav>
-</header>
+  <header>
+    <h1>ODORAA</h1>
+    <p class="catchphrase">Breathe Fresh. Breathe Easy.</p>
+    <nav class="mt-4 space-x-6">
+      <a href="#products">Our Products</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About Us</a>
+      <a href="#buy">Buy Now</a>
+    </nav>
+  </header>
 
-<section>
-  <p style="text-align:center; font-weight:600;">
-    Welcome to Odoraa – eco-friendly odor eliminators for a fresher home.
-  </p>
-</section>
+  <section id="welcome" style="background-color:#eff6ff; border-radius:12px; padding:2rem 1.5rem; max-width:960px; margin: 2rem auto;">
+    <p style="font-size:1.25rem; color:#1e40af; font-weight:600; text-align:center; max-width:800px; margin-left:auto; margin-right:auto;">
+      Welcome to Odoraa.com – your destination for all-natural, eco-friendly odor eliminators that keep your spaces fresh, clean, and breathable.
+    </p>
+  </section>
 
-<main>
+  <main>
 
-<section id="products">
-  <h2>Our Products</h2>
-  <ul>
-    <li>Odoraa Shoe Odor Eliminator</li>
-    <li>Odoraa Dorm Kit</li>
-    <li>Odoraa Trash Can Solution</li>
-    <li>Odoraa for Pets</li>
-  </ul>
-</section>
-
-<section id="faqs">
-  <h2>FAQs</h2>
-  <p>Lasts up to 3 months, safe, reusable, solar rechargeable.</p>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>heyodoraa@gmail.com</p>
-</section>
-
-<section id="about">
-  <h2>About Odoraa</h2>
-  <p>
-    Odoraa is a mom-founded brand created by Devarshi Jain to provide safe,
-    natural odor solutions for families. It removes smells at the source
-    instead of masking them.
-  </p>
-
-  <p>
-    From kitchen trash to pet odors and nurseries, Odoraa helps families
-    maintain a fresh, healthy home without harsh chemicals.
-  </p>
-
-  <p><strong>Our Mission:</strong> Healthier homes, naturally.</p>
-</section>
-
-<section id="buy" style="text-align:center;">
-  <h2>Buy Now 🛒</h2>
-  <p>Shop Odoraa’s best-selling odor eliminators on Amazon:</p>
-
-  <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-
-    <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN"
-       target="_blank" rel="noopener noreferrer" class="btn-buy">
+    <section id="buy" style="text-align:center;">
+      <h2>Buy Now 🛒</h2>
+      <p>Shop Odoraa’s best-selling odor eliminators on Amazon:</p>
+      <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+      <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN"
+        target="_blank" rel="noopener noreferrer" class="btn-buy">
       🐾 Odoraa for Pets
     </a>
 
@@ -239,72 +256,97 @@
   </div>
 </section>
 
-</main>
-<section id="buy" style="text-align:center;">
-  <h2>Buy Now 🛒</h2>
-  <p>Shop Odoraa’s best-selling odor eliminators on Amazon:</p>
+    <section id="faqs" style="background-color:#dbeafe;">
+      <h2>Frequently Asked Questions ❓</h2>
+      <ul>
+        <li><strong>Q1:</strong> How long does one 100g Odoraa pack last?<br>Up to 3 months (1 month for shoe pouch) with solar recharging.</li>
+        <li><strong>Q2:</strong> How many pouches should I use?<br>1–2 for small, 2–3 for medium, 3–4 for large spaces.</li>
+        <li><strong>Q3:</strong> What odors does it eliminate?<br>Trash, food, bathrooms, pets, shoes, etc.</li>
+        <li><strong>Q4:</strong> Safe for pets and kids?<br>Yes! Natural and non-toxic ingredients.</li>
+        <li><strong>Q5:</strong> How to recharge?<br>Sunlight for 2–3 hours once a month.</li>
+        <li><strong>Q6:</strong> Where can I use it?<br>Kitchen drawers, restrooms, dorms, closets, RVs.</li>
+      </ul>
+    </section>
 
-  <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+    <section id="contact">
+      <h2>Contact Us 📨</h2>
+      <p>Email: <a href="mailto:heyodoraa@gmail.com" class="text-blue-600 hover:underline">heyodoraa@gmail.com</a></p>
+    </section>
 
-    <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN"
-       target="_blank" rel="noopener noreferrer" class="btn-buy">
-      🐾 Odoraa for Pets
-    </a>
+    <section id="about" style="background-color:#dbeafe;">
+      <h2>About Us 🌎</h2>
 
-    <a href="https://www.amazon.com/Odoraa-Natural-Purifier-Eliminator-Rechargeable/dp/B0F882HHQ2"
-       target="_blank" rel="noopener noreferrer" class="btn-buy">
-      🎒 Odoraa Dorm Kit
-    </a>
+      <h3 style="font-size:2rem; font-weight:700; color:#1e40af; margin-bottom:1rem;">
+        About Odoraa – Mom-Founded, Safe & Sustainable Odor Solutions
+      </h3>
 
-    <a href="https://www.amazon.com/Odoraa-Natural-Purifier-Eliminator-Rechargeable/dp/B0F882HHQ2"
-       target="_blank" rel="noopener noreferrer" class="btn-buy">
-      🗑️ Odoraa for Trash Drawers & Bins
-    </a>
+      <p>
+        Odoraa is a mom-founded brand created by Devarshi Jain, built on a simple mission—to provide a safe, natural, and effective odor solution for modern families.
+      </p>
 
-    <a href="https://www.amazon.com/Remover-Odoraa-Lemongrass-Fragrance-Rechargeable-Eco-Friendly/dp/B0FG7J6MM2"
-       target="_blank" rel="noopener noreferrer" class="btn-buy">
-      👟 Odoraa for Shoes
-    </a>
+      <p>
+        As a mother, Devarshi experienced the daily challenge of dealing with stubborn odors—from kitchen trash and cooking smells to diaper changes in the nursery. Most products she tried were either filled with harsh chemicals or only worked as temporary air fresheners that masked odors instead of eliminating them.
+      </p>
 
-  </div>
-</section>
+      <p><strong>That’s when the idea for Odoraa was born.</strong></p>
+
+      <p>
+        Odoraa is designed as a solar powered odor absorber that works as a natural odor eliminator, helping remove unwanted smells at the source. It’s a non-toxic, reusable, and eco-friendly alternative to traditional air fresheners, making it ideal for homes with babies, kids, and pets.
+      </p>
+
+      <p>Whether used as a:</p>
+
+      <ul>
+        <li>Trash can odor remover</li>
+        <li>Kitchen odor eliminator</li>
+        <li>Diaper odor control solution in nurseries</li>
+        <li>Closet and shoe deodorizer</li>
+      </ul>
+
+      <p>
+        Odoraa is built to make everyday living cleaner, fresher, and healthier.
+      </p>
+
+      <h3 style="font-size:1.75rem; font-weight:700; color:#1e40af; margin-top:2rem; margin-bottom:1rem;">
+        Our Mission
+      </h3>
+
+      <p>
+        To create family-safe, sustainable home solutions that eliminate odors naturally without compromise.
+      </p>
+
+      <h3 style="font-size:1.75rem; font-weight:700; color:#1e40af; margin-top:2rem; margin-bottom:1rem;">
+        Why Families Choose Odoraa
+      </h3>
+
+      <ul>
+        <li>Non-toxic and safe for babies and pets</li>
+        <li>Solar-powered and reusable for long-term use</li>
+        <li>Eco-friendly alternative to chemical air fresheners</li>
+        <li>Designed by a mom who understands real home challenges</li>
+      </ul>
+
+      <h3 style="font-size:1.75rem; font-weight:700; color:#1e40af; margin-top:2rem; margin-bottom:1rem;">
+        A Note from Our Founder
+      </h3>
+
+      <blockquote style="border-left:4px solid #2563eb; padding-left:1rem; color:#1e3a8a; font-style:italic; margin-top:1rem;">
+        “As a mom, I wanted something that truly works—something safe for my children and sustainable for our planet. Odoraa is not just a product; it’s a solution created from real life, for real families.”
+        <br><br>
+        <strong>— Devarshi Jain, Founder of Odoraa</strong>
+      </blockquote>
+
+      <p style="margin-top:2rem;">
+        Odoraa is proudly a mom-founded and women-led brand under Kritical Technolabs LLC, committed to creating thoughtful, effective, and sustainable solutions for everyday home care.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Odoraa. All Rights Reserved. ✨ Made by KJ ✮
+  </footer>
+
 </body>
 </html>
-<section id="contact">
-  <h2>Contact</h2>
-  <p>heyodoraa@gmail.com</p>
-</section>
-
-<section id="about">
-  <h2>About Odoraa</h2>
-  <p>
-    Odoraa is a mom-founded brand created by Devarshi Jain to provide safe,
-    natural odor solutions for families. It removes smells at the source
-    instead of masking them.
-  </p>
-
-  <p>
-    From kitchen trash to pet odors and nurseries, Odoraa helps families
-    maintain a fresh, healthy home without harsh chemicals.
-  </p>
-
-  <p><strong>Our Mission:</strong> Healthier homes, naturally.</p>
-</section>
-
-<section id="buy" style="text-align:center;">
-  <h2>Buy Now</h2>
-
-  <a href="#" class="btn-buy">Odoraa for Pets</a><br><br>
-  <a href="#" class="btn-buy">Dorm Kit</a><br><br>
-  <a href="#" class="btn-buy">Trash Solution</a><br><br>
-  <a href="#" class="btn-buy">Shoes</a>
-</section>
-
-</main>
-
-<footer style="text-align:center; padding:20px;">
-  © 2025 Odoraa
-</footer>
-
-</body>
-</html>
+```
