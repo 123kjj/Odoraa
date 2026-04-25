@@ -54,6 +54,99 @@
       padding: 0.7rem 2rem;
       border-radius: 10px;
       display: inline-block;
+    }
+
+    .carousel-container { width: 400px; margin: auto; }
+    .carousel-image { width: 100%; border-radius: 10px; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ODORAA</h1>
+  <p>Breathe Fresh. Breathe Easy.</p>
+  <nav>
+    <a href="#products">Products</a> |
+    <a href="#faqs">FAQs</a> |
+    <a href="#contact">Contact</a> |
+    <a href="#about">About</a> |
+    <a href="#buy">Buy</a>
+  </nav>
+</header>
+
+<section>
+  <p style="text-align:center; font-weight:600;">
+    Welcome to Odoraa – eco-friendly odor eliminators for a fresher home.
+  </p>
+</section>
+
+<main>
+
+<section id="products">
+  <h2>Our Products</h2>
+  <ul>
+    <li>Odoraa Shoe Odor Eliminator</li>
+    <li>Odoraa Dorm Kit</li>
+    <li>Odoraa Trash Can Solution</li>
+    <li>Odoraa for Pets</li>
+  </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odoraa - Single Page</title>
+  <link rel="icon" type="image/png" href="odoraa-logo.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    header {
+      background: url('bg_odoraa.jpg') center/cover no-repeat;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header * { position: relative; z-index: 1; }
+
+    header h1 { font-size: 4rem; font-weight: 900; }
+    header p { font-size: 1.3rem; }
+
+    section {
+      background: #eff6ff;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 960px;
+      border-radius: 12px;
+    }
+
+    h2 { font-size: 2rem; color: #1e40af; font-weight: bold; }
+
+    .btn-buy {
+      background: #2563eb;
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 10px;
+      display: inline-block;
       text-decoration: none;
     }
   </style>
@@ -144,6 +237,67 @@
     </a>
 
   </div>
+</section>
+
+</main>
+<section id="buy" style="text-align:center;">
+  <h2>Buy Now 🛒</h2>
+  <p>Shop Odoraa’s best-selling odor eliminators on Amazon:</p>
+
+  <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+
+    <a href="https://www.amazon.com/Odoraa-Essentials-Pet-Odor-Eliminator-Rechargeable/dp/B0F5H23PWN"
+       target="_blank" rel="noopener noreferrer" class="btn-buy">
+      🐾 Odoraa for Pets
+    </a>
+
+    <a href="https://www.amazon.com/Odoraa-Natural-Purifier-Eliminator-Rechargeable/dp/B0F882HHQ2"
+       target="_blank" rel="noopener noreferrer" class="btn-buy">
+      🎒 Odoraa Dorm Kit
+    </a>
+
+    <a href="https://www.amazon.com/Odoraa-Natural-Purifier-Eliminator-Rechargeable/dp/B0F882HHQ2"
+       target="_blank" rel="noopener noreferrer" class="btn-buy">
+      🗑️ Odoraa for Trash Drawers & Bins
+    </a>
+
+    <a href="https://www.amazon.com/Remover-Odoraa-Lemongrass-Fragrance-Rechargeable-Eco-Friendly/dp/B0FG7J6MM2"
+       target="_blank" rel="noopener noreferrer" class="btn-buy">
+      👟 Odoraa for Shoes
+    </a>
+
+  </div>
+</section>
+</body>
+</html>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>heyodoraa@gmail.com</p>
+</section>
+
+<section id="about">
+  <h2>About Odoraa</h2>
+  <p>
+    Odoraa is a mom-founded brand created by Devarshi Jain to provide safe,
+    natural odor solutions for families. It removes smells at the source
+    instead of masking them.
+  </p>
+
+  <p>
+    From kitchen trash to pet odors and nurseries, Odoraa helps families
+    maintain a fresh, healthy home without harsh chemicals.
+  </p>
+
+  <p><strong>Our Mission:</strong> Healthier homes, naturally.</p>
+</section>
+
+<section id="buy" style="text-align:center;">
+  <h2>Buy Now</h2>
+
+  <a href="#" class="btn-buy">Odoraa for Pets</a><br><br>
+  <a href="#" class="btn-buy">Dorm Kit</a><br><br>
+  <a href="#" class="btn-buy">Trash Solution</a><br><br>
+  <a href="#" class="btn-buy">Shoes</a>
 </section>
 
 </main>
