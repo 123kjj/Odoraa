@@ -5,7 +5,222 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Odoraa - Single Page</title>
+  <link rel="icon" type="image/png" href="odoraa-logo.png"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odoraa - Single Page</title>
   <link rel="icon" type="image/png" href="odoraa-logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    header {
+      background: url('bg_odoraa.jpg') center center / cover no-repeat;
+      padding: 3rem 1rem;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+      text-align: center;
+      position: relative;
+      color: #ffffff;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+      border-radius: 0 0 12px 12px;
+    }
+
+    header h1,
+    header p.catchphrase,
+    header nav {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p.catchphrase {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0;
+      letter-spacing: 0.08em;
+    }
+
+    header nav a {
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #e0f2fe;
+    }
+
+    main {
+      margin-top: 3rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    section {
+      background-color: #eff6ff;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      margin-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    .btn-buy {
+      background-color: #2563eb;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .buy-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .buy-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-buy {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+    }
+
+    footer {
+      background-color: #93c5fd;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #000000;
+      border-radius: 0 0 12px 12px;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ODORAA</h1>
+  <p class="catchphrase">Breathe Fresh. Breathe Easy.</p>
+
+  <nav class="mt-4 space-x-6">
+    <a href="#products">Our Products</a>
+    <a href="#faqs">FAQs</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About Us</a>
+    <a href="#buy">Buy Now</a>
+  </nav>
+</header>
+
+<section id="welcome">
+  <p style="font-size:1.25rem; color:#1e40af; font-weight:600; text-align:center;">
+    Welcome to Odoraa.com – eco-friendly odor eliminators for your home.
+  </p>
+</section>
+
+<main>
+
+<section id="products">
+  <h2>Our Products 🧴</h2>
+  <ul>
+    <li><strong>🫳 Shoe Odor Eliminator</strong></li>
+    <li><strong>🌍 Camping Vans</strong></li>
+    <li><strong>🎒 Dorm Kit</strong></li>
+    <li><strong>🗑️ Trash Can Pack</strong></li>
+    <li><strong>🍽️ Kitchen Odor Control</strong></li>
+    <li><strong>🚽 Bathroom Freshener</strong></li>
+    <li><strong>🐾 Pet Odor Eliminator</strong></li>
+  </ul>
+</section>
+
+<section id="faqs">
+  <h2>FAQs ❓</h2>
+  <ul>
+    <li>Lasts up to 3 months</li>
+    <li>Safe for kids & pets</li>
+    <li>Solar rechargeable</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact Us 📨</h2>
+  <p>Email: heyodoraa@gmail.com</p>
+</section>
+
+<section id="about">
+  <h2>About Us 🌎</h2>
+  <p>Mom-founded eco-friendly odor elimination brand.</p>
+</section>
+
+<!-- ✅ BUY NOW FIXED -->
+<section id="buy">
+  <h2>Buy Now 🛒</h2>
+
+  <div class="buy-container">
+    <a href="#" class="btn-buy">Shop Shoe Eliminator</a>
+    <a href="#" class="btn-buy">Shop Kitchen Pack</a>
+    <a href="#" class="btn-buy">Shop Trash Pack</a>
+    <a href="#" class="btn-buy">Shop Pet Pack</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2025 Odoraa ✨ Made by KJ
+</footer>
+
+</body>
+</html>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
