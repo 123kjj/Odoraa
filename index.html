@@ -1,275 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Odoraa - Single Page</title>
-  <link rel="icon" type="image/png" href="odoraa-logo.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odoraa – Breathe Fresh. Breathe Easy.</title>
+<meta name="description" content="Natural, solar-rechargeable, reusable odor eliminators for every corner of your home. Safe for kids and pets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3d2b;
+    --green-mid: #2d6a4f;
+    --green-soft: #52b788;
+    --green-light: #95d5b2;
+    --cream: #faf7f2;
+    --earth: #c9a87c;
+    --earth-light: #e8d5b7;
+    --white: #ffffff;
+    --text-dark: #1c2b1e;
+    --text-mid: #4a6358;
+    --text-light: #7a9585;
+    --card-bg: #f4f0e8;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(26,61,43,0.10);
+    --shadow-hover: 0 12px 40px rgba(26,61,43,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; }
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,247,242,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--earth-light);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: var(--green-deep); letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--green-soft); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.9rem; font-weight: 500; color: var(--text-mid); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-cta { background: var(--green-deep); color: var(--white); border: none; padding: 10px 22px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--green-deep); border-radius: 2px; transition: all 0.3s; }
 
-    body {
-      font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      line-height: 1.6;
-    }
+  /* HERO */
+  .hero {
+    min-height: 92vh; display: flex; align-items: center;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #2d6a4f 55%, #52b788 100%);
+    position: relative; overflow: hidden; padding: 6% 5%;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content { position: relative; max-width: 620px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: var(--green-light); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); color: var(--white); margin-bottom: 1.2rem; }
+  .hero h1 em { color: var(--green-light); font-style: italic; }
+  .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; max-width: 480px; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--white); color: var(--green-deep); border: none; padding: 14px 32px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--earth-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); padding: 14px 32px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+  .hero-orb { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: clamp(260px, 38vw, 480px); height: clamp(260px, 38vw, 480px); border-radius: 50%; background: radial-gradient(circle, rgba(149,213,178,0.25) 0%, rgba(82,183,136,0.1) 50%, transparent 70%); border: 1px solid rgba(149,213,178,0.2); display: flex; align-items: center; justify-content: center; }
+  .hero-orb::after { content: '🌿'; font-size: clamp(80px, 12vw, 160px); filter: drop-shadow(0 0 40px rgba(82,183,136,0.5)); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; }
+  .stat { }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--green-light); }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    header {
-      background: url('bg_odoraa.jpg') center center / cover no-repeat;
-      padding: 3rem 1rem;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      text-align: center;
-      position: relative;
-      color: #ffffff;
-    }
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--green-soft); margin-bottom: 0.6rem; }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--green-deep); margin-bottom: 1rem; }
+  .section-sub { font-size: 1.05rem; color: var(--text-mid); max-width: 520px; font-weight: 300; }
+  .section-header { margin-bottom: 3.5rem; }
+  .center { text-align: center; }
+  .center .section-sub { margin: 0 auto; }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 0;
-      border-radius: 0 0 12px 12px;
-    }
+  /* FEATURES STRIP */
+  .features-strip { background: var(--green-deep); padding: 36px 5%; }
+  .features-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+  .feature-pill { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 12px 22px; color: var(--white); font-size: 0.9rem; font-weight: 500; }
+  .feature-pill span { font-size: 1.3rem; }
 
-    header h1,
-    header p.catchphrase,
-    header nav {
-      position: relative;
-      z-index: 1;
-    }
+  /* PRODUCTS */
+  .products-section { background: var(--cream); }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; }
+  .product-card {
+    background: var(--white); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: all 0.3s; border: 1px solid var(--earth-light);
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+  .product-img {
+    height: 200px; background: linear-gradient(135deg, #e8f5ee 0%, #d4edda 100%);
+    display: flex; align-items: center; justify-content: center; font-size: 5rem;
+    position: relative;
+  }
+  .product-badge { position: absolute; top: 12px; left: 12px; background: var(--green-soft); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+  .product-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--green-deep); margin-bottom: 0.5rem; }
+  .product-desc { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 1rem; line-height: 1.6; }
+  .product-benefits { list-style: none; margin-bottom: 1.2rem; }
+  .product-benefits li { font-size: 0.85rem; color: var(--text-dark); padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+  .product-benefits li::before { content: '✓'; color: var(--green-soft); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+  .product-pack { font-size: 0.8rem; color: var(--text-light); background: var(--card-bg); border-radius: 8px; padding: 6px 12px; margin-bottom: 1.2rem; display: inline-block; }
+  .product-footer { margin-top: auto; }
+  .btn-buy { width: 100%; background: var(--green-deep); color: var(--white); border: none; padding: 13px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-decoration: none; display: block; text-align: center; transition: all 0.2s; letter-spacing: 0.3px; }
+  .btn-buy:hover { background: var(--green-mid); transform: translateY(-1px); }
 
-    header h1 {
-      font-size: 4.5rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.25rem;
-    }
+  /* HOW IT WORKS */
+  .how-section { background: var(--green-deep); color: var(--white); }
+  .how-section .section-title { color: var(--green-light); }
+  .how-section .section-sub { color: rgba(255,255,255,0.7); }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; }
+  .step-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600; color: var(--green-soft); margin-bottom: 0.5rem; line-height: 1; }
+  .step-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
 
-    header p.catchphrase {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-top: 0;
-      letter-spacing: 0.08em;
-    }
+  /* BENEFITS */
+  .benefits-section { background: var(--earth-light); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+  .benefit-card { background: var(--white); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); }
+  .benefit-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+  .benefit-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--green-deep); margin-bottom: 0.4rem; }
+  .benefit-desc { font-size: 0.88rem; color: var(--text-mid); }
 
-    header nav a {
-      transition: color 0.3s ease, transform 0.3s ease;
-      font-weight: 600;
-      font-size: 1.125rem;
-      color: #e0f2fe;
-    }
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--cream); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .review-card { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); border-left: 4px solid var(--green-soft); }
+  .stars { color: var(--earth); font-size: 1.1rem; margin-bottom: 0.8rem; }
+  .review-text { font-size: 0.95rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+  .reviewer { display: flex; align-items: center; gap: 10px; }
+  .reviewer-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--green-light), var(--green-soft)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .reviewer-info strong { display: block; font-size: 0.9rem; color: var(--green-deep); }
+  .reviewer-info span { font-size: 0.78rem; color: var(--text-light); }
 
-    main {
-      margin-top: 3rem;
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
+  /* FAQ */
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--earth-light); }
+  .faq-question { width: 100%; background: none; border: none; padding: 1.3rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--green-deep); }
+  .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--card-bg); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: transform 0.3s; color: var(--green-mid); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+  .faq-answer p { padding-bottom: 1.2rem; font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green-soft); color: white; }
+  .faq-item.open .faq-answer { max-height: 300px; }
 
-    section {
-      background-color: #eff6ff;
-      border-radius: 12px;
-      padding: 2.5rem 2rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
-      transition: box-shadow 0.3s ease;
-    }
+  /* ABOUT SECTION PREVIEW */
+  .about-section { background: var(--cream); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-visual { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); border-radius: 24px; min-height: 380px; display: flex; align-items: center; justify-content: center; font-size: 7rem; position: relative; overflow: hidden; }
+  .about-visual::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0z'/%3E%3C/g%3E%3C/svg%3E"); }
+  .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; color: var(--text-mid); border-left: 3px solid var(--green-soft); padding-left: 1.2rem; margin: 1.5rem 0; line-height: 1.7; }
+  .use-cases { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .use-tag { background: var(--earth-light); color: var(--green-deep); font-size: 0.8rem; font-weight: 500; padding: 6px 14px; border-radius: 50px; }
 
-    section:hover {
-      box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
-    }
+  /* CONTACT */
+  .contact-section { background: var(--green-deep); color: var(--white); }
+  .contact-section .section-title { color: var(--green-light); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info { }
+  .contact-info p { color: rgba(255,255,255,0.72); margin-bottom: 2rem; font-size: 1.05rem; }
+  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--green-light); font-weight: 600; text-decoration: none; font-size: 1.05rem; transition: color 0.2s; }
+  .contact-email:hover { color: var(--white); }
+  .contact-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 2.5rem; }
+  .form-group { margin-bottom: 1.3rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; letter-spacing: 0.3px; }
+  .form-group input, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 12px 16px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--green-soft); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .btn-submit { width: 100%; background: var(--green-soft); color: var(--white); border: none; padding: 14px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-submit:hover { background: var(--white); color: var(--green-deep); }
 
-    section h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #1e40af;
-      margin-bottom: 1.5rem;
-    }
+  /* FOOTER */
+  footer { background: var(--text-dark); color: rgba(255,255,255,0.6); padding: 40px 5% 24px; }
+  .footer-inner { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--white); }
+  .footer-logo span { color: var(--green-soft); }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--green-soft); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; text-align: center; font-size: 0.82rem; }
 
-    section p, section li {
-      font-size: 1.125rem;
-      color: #1e3a8a;
-    }
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
+  #home-page { display: block; }
 
-    ul {
-      margin-left: 1.25rem;
-      list-style-type: disc;
-      margin-bottom: 1.5rem;
-    }
+  /* ABOUT PAGE */
+  .about-page-hero { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); padding: 80px 5% 60px; color: var(--white); }
+  .about-page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--green-light); margin-bottom: 1rem; }
+  .about-page-hero p { color: rgba(255,255,255,0.78); max-width: 600px; font-size: 1.1rem; }
+  .about-content { padding: 60px 5%; background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .about-card { background: var(--white); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); }
+  .about-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.7rem; }
+  .about-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
 
-    .btn-buy {
-      background-color: #2563eb;
-      color: white;
-      font-size: 1.25rem;
-      font-weight: 600;
-      padding: 0.75rem 2.5rem;
-      border-radius: 12px;
-      text-decoration: none;
-      display: inline-block;
-    }
+  /* CONTACT PAGE */
+  .contact-page-content { padding: 60px 5%; background: var(--cream); }
 
-    .buy-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
+  /* SCROLL ANIMATION */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
 
-    @media (max-width: 768px) {
-      .buy-container {
-        flex-direction: column;
-        align-items: center;
-      }
+  /* CTA BANNER */
+  .cta-banner { background: linear-gradient(135deg, var(--earth) 0%, var(--green-mid) 100%); padding: 60px 5%; text-align: center; }
+  .cta-banner h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--white); margin-bottom: 0.8rem; }
+  .cta-banner p { color: rgba(255,255,255,0.82); margin-bottom: 2rem; font-size: 1.05rem; }
+  .cta-banner .btn-primary { font-size: 1.05rem; padding: 16px 40px; }
 
-      .btn-buy {
-        width: 100%;
-        max-width: 320px;
-        text-align: center;
-      }
-    }
-
-    footer {
-      background-color: #93c5fd;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      font-weight: 600;
-      color: #000000;
-      border-radius: 0 0 12px 12px;
-      margin-top: 4rem;
-    }
-  </style>
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); padding: 1.5rem 5%; border-bottom: 1px solid var(--earth-light); box-shadow: var(--shadow); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { min-height: 80vh; }
+    .hero-orb { display: none; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-visual { min-height: 220px; }
+    .contact-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+    section { padding: 56px 5%; }
+  }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>ODORAA</h1>
-  <p class="catchphrase">Breathe Fresh. Breathe Easy.</p>
-
-  <nav class="mt-4 space-x-6">
-    <a href="#products">Our Products</a>
-    <a href="#faqs">FAQs</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About Us</a>
-    <a href="#buy">Buy Now</a>
-  </nav>
-</header>
-
-<section id="welcome">
-  <p style="font-size:1.25rem; color:#1e40af; font-weight:600; text-align:center;">
-    Welcome to Odoraa.com – your destination for all-natural, eco-friendly odor eliminators that keep your spaces fresh, clean, and breathable.
-  </p>
-</section>
-
-<main>
-
-<section id="products">
-  <h2>Our Products 🧴</h2>
-  <ul>
-    <li><strong>🫳 Odoraa Shoe Odor Eliminator</strong> – Lemongrass-scented pouch for shoes.</li>
-    <li><strong>🌍 Odoraa for Camping Vans</strong> – For van life, cooking, gear & restroom smells.</li>
-    <li><strong>🎒 Odoraa Dorm Kit</strong> – For trash drawers, bathrooms, shoes, closets.</li>
-    <li><strong>🗑️ Odoraa for Black Trash Can</strong> – Trash bin freshness for up to 3 months.</li>
-    <li><strong>🍽️ Odoraa for Kitchen Trash Drawer</strong> – Neutralizes food waste smells.</li>
-    <li><strong>🌮 Odoraa for Kitchen</strong> – Keeps cooking space odor-free.</li>
-    <li><strong>🚽 Odoraa for Restrooms</strong> – Freshens bathrooms, bins, moisture areas.</li>
-    <li><strong>🐾 Odoraa for Pets</strong> – For litter areas, pet beds, and feeding zones.</li>
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="showPage('home-page')">Odor<span>aa</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showPage('home-page'); return false;">Home</a></li>
+    <li><a href="#" onclick="showPage('products-page'); return false;">Shop</a></li>
+    <li><a href="#" onclick="showPage('about-page'); return false;">About Us</a></li>
+    <li><a href="#" onclick="showPage('faq-page'); return false;">FAQs</a></li>
+    <li><a href="#" onclick="showPage('contact-page'); return false;">Contact</a></li>
   </ul>
-  <p>All products are solar rechargeable, eco-friendly, safe for families, and reusable.</p>
-</section>
-
-<section id="faqs" style="background-color:#dbeafe;">
-  <h2>Frequently Asked Questions ❓</h2>
-  <ul>
-    <li><strong>Q1:</strong> How long does one 100g Odoraa pack last?<br>Up to 3 months (1 month for shoe pouch) with solar recharging.</li>
-    <li><strong>Q2:</strong> How many pouches should I use?<br>1–2 for small, 2–3 for medium, 3–4 for large spaces.</li>
-    <li><strong>Q3:</strong> What odors does it eliminate?<br>Trash, food, bathrooms, pets, shoes, etc.</li>
-    <li><strong>Q4:</strong> Safe for pets and kids?<br>Yes! Natural and non-toxic ingredients.</li>
-    <li><strong>Q5:</strong> How to recharge?<br>Sunlight for 2–3 hours once a month.</li>
-    <li><strong>Q6:</strong> Where can I use it?<br>Kitchen drawers, restrooms, dorms, closets, RVs.</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact Us 📨</h2>
-  <p>Email: <a href="mailto:heyodoraa@gmail.com">heyodoraa@gmail.com</a></p>
-</section>
-
-<section id="about" style="background-color:#dbeafe;">
-  <h2>About Us 🌎</h2>
-
-  <p>Odoraa is a mom-founded brand created by Devarshi Jain, built on a simple mission—to provide a safe, natural, and effective odor solution for modern families.</p>
-
-  <p>As a mother, she experienced daily challenges with odors from kitchens, trash cans, diapers, and more. Most products only masked smells instead of removing them.</p>
-
-  <p><strong>That’s when Odoraa was created.</strong></p>
-
-  <p>Odoraa is a solar powered odor absorber that removes odors at the source instead of covering them.</p>
-
-  <ul>
-    <li>Trash can odor remover</li>
-    <li>Kitchen odor eliminator</li>
-    <li>Diaper odor control</li>
-    <li>Shoe and closet deodorizer</li>
-  </ul>
-
-  <p><strong>Our Mission:</strong> Create safe, sustainable home solutions that eliminate odors naturally.</p>
-
-  <p><strong>Why families choose Odoraa:</strong></p>
-
-  <ul>
-    <li>Non-toxic and safe for babies and pets</li>
-    <li>Reusable and solar powered</li>
-    <li>Eco-friendly alternative to sprays</li>
-  </ul>
-
-  <blockquote style="border-left:4px solid #2563eb; padding-left:1rem; font-style:italic;">
-    “Odoraa is not just a product; it’s a solution created from real life, for real families.”  
-    <br>— Founder, Devarshi Jain
-  </blockquote>
-</section>
-
-<section id="buy">
-  <h2>Buy Now 🛒</h2>
-
-  <div class="buy-container">
-
-    <a href="https://www.amazon.com/Remover-Odoraa-Lemongrass-Fragrance-Rechargeable-Eco-Friendly/dp/B0FG7J6MM2" target="_blank" class="btn-buy">
-      Shoe Odoraa
-    </a>
-
-    <a href="https://www.amazon.com/Rechargeable-Long-Lasting-Eco-Friendly-Odoraa-Essentials/dp/B0F4WNXLXJ" target="_blank" class="btn-buy">
-      Kitchen Odoraa
-    </a>
-
-    <a href="https://www.amazon.com/Odoraa-Natural-Purifier-Eliminator-Rechargeable/dp/B0F882HHQ2" target="_blank" class="btn-buy">
-      Dorm Odoraa
-    </a>
-
-    <a href="https://www.amazon.com/Eliminator-Rechargeable-Eco-Friendly-Odoraa-Essentials/dp/B0F5H23PWN" target="_blank" class="btn-buy">
-      Pet Odoraa
-    </a>
-
+  <a href="#" class="nav-cta" onclick="showPage('products-page'); return false;">Shop Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
-</section>
-</main>
+</nav>
 
+<!-- ========== HOME PAGE ========== -->
+<div id="home-page" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><span>🌿</span> Natural & Eco-Friendly</div>
+      <h1>Breathe Fresh.<br><em>Breathe Easy.</em></h1>
+      <p>Natural, solar-rechargeable odor eliminators for every corner of your home. Safe for kids, pets, and the planet.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="showPage('products-page'); return false;">Shop Now</a>
+        <a href="#" class="btn-outline" onclick="showPage('about-page'); return false;">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">3mo</div><div class="stat-label">Lasts Up To</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Non-Toxic</div></div>
+        <div class="stat"><div class="stat-num">Solar</div><div class="stat-label">Rechargeable</div></div>
+      </div>
+    </div>
+    <div class="hero-orb"></div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="features-grid">
+      <div class="feature-pill"><span>☀️</span> Solar Rechargeable</div>
+      <div class="feature-pill"><span>🌱</span> Eco-Friendly</div>
+      <div class="feature-pill"><span>🐾</span> Safe for Pets & Kids</div>
+      <div class="feature-pill"><span>♻️</span> Reusable & Long-Lasting</div>
+      <div class="feature-pill"><span>🚫</span> No Masking — True Elimination</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS PREVIEW -->
+  <section class="products-section">
+    <div class="section-header">
+      <div class="section-label">Our Products</div>
+      <h2 class="section-title">Find Your Fresh</h2>
+      <p class="section-sub">Targeted odor solutions for every space in your home — naturally powerful, endlessly reusable.</p>
+    </div>
+    <div class="products-grid" id="products-grid-home">
+      <!-- JS renders cards -->
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="#" class="btn-primary" style="background:var(--green-deep);color:white;padding:14px 40px;display:inline-block;border-radius:50px;text-decoration:none;font-weight:600;" onclick="showPage('products-page'); return false;">View All Products</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="section-header center">
+      <div class="section-label" style="color:var(--green-light)">How It Works</div>
+      <h2 class="section-title">Simple. Natural. Effective.</h2>
+      <p class="section-sub" style="margin:0 auto;">No chemicals, no sprays — just the power of nature and sunshine.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-in">
+        <div class="step-num">01</div>
+        <div class="step-icon">📦</div>
+        <div class="step-title">Place It</div>
+        <div class="step-desc">Put the Odoraa pouch in the area where you want to eliminate odors — trash can, closet, shoe rack, or bathroom.</div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">02</div>
+        <div class="step-icon">🌬️</div>
+        <div class="step-title">It Absorbs</div>
+        <div class="step-desc">The natural formula works continuously, absorbing and neutralizing odors at the source — not just masking them.</div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">03</div>
+        <div class="step-icon">☀️</div>
+        <div class="step-title">Recharge Monthly</div>
+        <div class="step-desc">Once a month, place in direct sunlight for 2–3 hours to rejuvenate and keep it working at full power.</div>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">04</div>
+        <div class="step-icon">✨</div>
+        <div class="step-title">Enjoy Fresh Air</div>
+        <div class="step-desc">Lasts up to 3 months per cycle. Just recharge and reuse — over and over again.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits-section">
+    <div class="section-header center">
+      <div class="section-label">Why Odoraa</div>
+      <h2 class="section-title">Better Than the Rest</h2>
+      <p class="section-sub" style="margin:0 auto;">No sprays. No charcoal bags. No harmful chemicals. Just real, lasting freshness.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-title">Eliminates, Not Masks</div>
+        <div class="benefit-desc">Targets and neutralizes odor molecules at the source, unlike air fresheners that just cover smells up.</div>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-title">Better Than Charcoal</div>
+        <div class="benefit-desc">More effective and longer lasting than traditional activated charcoal bags, with solar recharging built in.</div>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">👨‍👩‍👧</div>
+        <div class="benefit-title">Family Safe</div>
+        <div class="benefit-desc">100% non-toxic and natural. Completely safe for use around babies, children, and pets of all kinds.</div>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">💚</div>
+        <div class="benefit-title">Sustainable Choice</div>
+        <div class="benefit-desc">Reusable for months, solar powered, and eco-friendly — reducing single-use plastic and chemical waste.</div>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-title">Cost-Effective</div>
+        <div class="benefit-desc">One pouch lasts up to 3 months. No monthly refills, subscriptions, or constant replacements needed.</div>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🏠</div>
+        <div class="benefit-title">Whole Home Solution</div>
+        <div class="benefit-desc">Designed for kitchens, bathrooms, trash cans, shoes, closets, pet areas — everywhere you need freshness.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-header center">
+      <div class="section-label">Customer Love</div>
+      <h2 class="section-title">Real Results, Real Families</h2>
+      <p class="section-sub" style="margin:0 auto;">Thousands of homes are breathing fresher air with Odoraa.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I put one in our kitchen trash drawer and the difference was immediate. No more dreading walking into the kitchen! My whole family noticed within a day."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">👩</div>
+          <div class="reviewer-info"><strong>Priya M.</strong><span>Mom of 3, Houston TX</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We have two cats and the litter smell was our biggest problem. Odoraa for Pets is a game changer — and knowing it's safe for them gives me total peace of mind."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">🐱</div>
+          <div class="reviewer-info"><strong>Sarah K.</strong><span>Pet Owner, Austin TX</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"My teenage son's shoes were unbearable. Shoe Odoraa fixed it in 48 hours. I've ordered three more pairs as gifts for his teammates!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">👟</div>
+          <div class="reviewer-info"><strong>Marcus T.</strong><span>Parent, Chicago IL</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Finally something that actually works and doesn't just spray perfume over bad smells. My bathroom stays fresh all week. Love that it's solar powered too!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">🌿</div>
+          <div class="reviewer-info"><strong>Aaisha N.</strong><span>Eco-Conscious Shopper</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was skeptical at first but this truly eliminates cooking smells. After a big curry night, the kitchen was fresh by morning. Worth every penny."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">🍳</div>
+          <div class="reviewer-info"><strong>Deepa R.</strong><span>Home Cook, San Jose CA</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The Home Care Kit is incredible value. I've got odor covered in my bathroom, closet, trash area, and shoes — all in one purchase. Highly recommend!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">🏡</div>
+          <div class="reviewer-info"><strong>Jennifer L.</strong><span>Apartment Dweller, NYC</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ PREVIEW -->
+  <section class="faq-section">
+    <div class="section-header center">
+      <div class="section-label">FAQs</div>
+      <h2 class="section-title">Questions? We've Got Answers.</h2>
+    </div>
+    <div class="faq-list" id="faq-home"></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="#" onclick="showPage('faq-page'); return false;" style="color:var(--green-mid);font-weight:600;text-decoration:none;font-size:0.95rem;">View All FAQs →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-visual">🌿</div>
+      <div>
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Born from a Mom's Real Problem</h2>
+        <p style="color:var(--text-mid);font-size:1rem;line-height:1.8;margin-bottom:1rem;">Odoraa was founded by Devarshi Jain — a mom who was tired of products that only masked odors. She wanted something safe, effective, and built for real family life.</p>
+        <blockquote class="about-quote">"Odoraa is not just a product; it's a solution created from real life, for real families."</blockquote>
+        <div class="use-cases">
+          <span class="use-tag">🗑️ Trash Cans</span>
+          <span class="use-tag">🍳 Kitchen</span>
+          <span class="use-tag">🚿 Bathroom</span>
+          <span class="use-tag">👟 Shoes</span>
+          <span class="use-tag">👶 Diaper Areas</span>
+          <span class="use-tag">🐾 Pet Spaces</span>
+        </div>
+        <a href="#" onclick="showPage('about-page'); return false;" style="display:inline-block;margin-top:1.8rem;color:var(--green-mid);font-weight:600;text-decoration:none;">Read Our Full Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Ready to Eliminate Odors Today?</h2>
+    <p>Join thousands of families breathing fresher, cleaner air — naturally.</p>
+    <a href="#" class="btn-primary" onclick="showPage('products-page'); return false;">Shop Fresh Now</a>
+  </div>
+
+</div><!-- end home-page -->
+
+
+<!-- ========== PRODUCTS PAGE ========== -->
+<div id="products-page" class="page">
+  <div style="background:linear-gradient(135deg,var(--green-deep),var(--green-mid));padding:70px 5% 50px;color:white;">
+    <div class="section-label" style="color:var(--green-light)">Our Products</div>
+    <h1 style="font-size:clamp(2.4rem,5vw,3.8rem);color:var(--green-light);margin-bottom:0.8rem;">Find Your Perfect<br>Fresh Solution</h1>
+    <p style="color:rgba(255,255,255,0.75);max-width:520px;font-size:1.05rem;">Every Odoraa product is solar-rechargeable, non-toxic, and built to last — for every corner of your home.</p>
+  </div>
+  <section style="background:var(--cream);padding:60px 5%;">
+    <div class="products-grid" id="products-grid-full"></div>
+  </section>
+  <div class="cta-banner">
+    <h2>Questions About a Product?</h2>
+    <p>We're happy to help you find the right Odoraa for your space.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact-page'); return false;">Contact Us</a>
+  </div>
+</div>
+
+
+<!-- ========== ABOUT PAGE ========== -->
+<div id="about-page" class="page">
+  <div class="about-page-hero">
+    <div class="section-label" style="color:var(--green-light)">About Odoraa</div>
+    <h1>A Mom-Founded Brand<br>Built for Real Families</h1>
+    <p>Odoraa was created by Devarshi Jain — a mother on a mission to provide safe, natural, and effective odor solutions for modern homes.</p>
+  </div>
+  <div class="about-content">
+    <div style="max-width:800px;margin-bottom:3rem;">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--green-deep);margin-bottom:1rem;">The Story Behind Odoraa</h2>
+      <p style="color:var(--text-mid);line-height:1.9;margin-bottom:1rem;font-size:1rem;">As a mother, Devarshi experienced daily odor challenges from kitchens, trash cans, bathrooms, and more. Most products on the market only masked smells instead of truly eliminating them — and many contained chemicals she wasn't comfortable having around her family.</p>
+      <p style="color:var(--text-mid);line-height:1.9;margin-bottom:1rem;font-size:1rem;">That frustration became the spark for Odoraa — a solar-powered odor absorber that removes odors at the source, using natural, non-toxic ingredients that are completely safe for kids and pets.</p>
+      <blockquote class="about-quote">"Odoraa is not just a product; it's a solution created from real life, for real families." — Devarshi Jain, Founder</blockquote>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--green-deep);margin-bottom:2rem;">What We Stand For</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🎯</div>
+        <h3>Our Mission</h3>
+        <p>Create safe, sustainable home solutions that eliminate odors naturally — without chemicals, without harm, without compromise.</p>
+      </div>
+      <div class="about-card">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🌿</div>
+        <h3>Natural First</h3>
+        <p>Every ingredient in Odoraa is carefully chosen to be effective yet completely non-toxic — because your family's safety is never negotiable.</p>
+      </div>
+      <div class="about-card">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">♻️</div>
+        <h3>Sustainability</h3>
+        <p>Solar-rechargeable and reusable for months — Odoraa reduces waste and offers a greener alternative to single-use sprays and chemical fresheners.</p>
+      </div>
+      <div class="about-card">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">👨‍👩‍👧</div>
+        <h3>Family-Focused</h3>
+        <p>Designed by a mom, for families. Everything we make is tested and trusted to be safe around babies, children, and beloved pets.</p>
+      </div>
+    </div>
+    <div style="margin-top:3rem;">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--green-deep);margin-bottom:1.5rem;">Where Odoraa Works</h2>
+      <div class="use-cases" style="gap:0.8rem;">
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">🗑️ Trash Can Odor</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">🍳 Kitchen Cooking Smells</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">👶 Diaper Odor Control</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">👟 Shoe Deodorizer</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">🚿 Bathroom Freshener</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">👗 Closet Freshener</span>
+        <span class="use-tag" style="padding:10px 20px;font-size:0.9rem;">🐾 Pet Area Deodorizer</span>
+      </div>
+    </div>
+  </div>
+  <div class="cta-banner">
+    <h2>Explore Our Products</h2>
+    <p>Find the perfect Odoraa for every room in your home.</p>
+    <a href="#" class="btn-primary" onclick="showPage('products-page'); return false;">Shop Now</a>
+  </div>
+</div>
+
+
+<!-- ========== FAQ PAGE ========== -->
+<div id="faq-page" class="page">
+  <div style="background:linear-gradient(135deg,var(--green-deep),var(--green-mid));padding:70px 5% 50px;color:white;">
+    <div class="section-label" style="color:var(--green-light)">FAQs</div>
+    <h1 style="font-size:clamp(2.4rem,5vw,3.8rem);color:var(--green-light);margin-bottom:0.8rem;">Frequently Asked<br>Questions</h1>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;">Everything you need to know about Odoraa.</p>
+  </div>
+  <section class="faq-section">
+    <div class="faq-list" id="faq-full"></div>
+  </section>
+  <div class="cta-banner">
+    <h2>Still Have Questions?</h2>
+    <p>We'd love to help — reach out to our team directly.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact-page'); return false;">Contact Us</a>
+  </div>
+</div>
+
+
+<!-- ========== CONTACT PAGE ========== -->
+<div id="contact-page" class="page">
+  <section class="contact-section" style="min-height:90vh;display:flex;flex-direction:column;justify-content:center;">
+    <div class="section-header">
+      <div class="section-label" style="color:var(--green-light)">Get In Touch</div>
+      <h2 class="section-title" style="color:var(--green-light)">We'd Love to Hear From You</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.7)">Questions, feedback, or just want to share how Odoraa changed your home? We're all ears.</p>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <p>Whether you need help finding the right product, have questions about how Odoraa works, or just want to say hello — our team is ready.</p>
+        <a href="mailto:heyodoraa@gmail.com" class="contact-email">
+          <span style="font-size:1.5rem;">✉️</span> heyodoraa@gmail.com
+        </a>
+        <div style="margin-top:2.5rem;">
+          <div style="font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">We're Great For</div>
+          <div style="display:flex;flex-direction:column;gap:0.7rem;">
+            <div style="color:rgba(255,255,255,0.75);font-size:0.9rem;">🛍️ Product recommendations</div>
+            <div style="color:rgba(255,255,255,0.75);font-size:0.9rem;">📦 Order support</div>
+            <div style="color:rgba(255,255,255,0.75);font-size:0.9rem;">♻️ Recharging & usage tips</div>
+            <div style="color:rgba(255,255,255,0.75);font-size:0.9rem;">🤝 Wholesale & bulk inquiries</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="jane@example.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleFormSubmit()">Send Message</button>
+        <p id="form-success" style="display:none;text-align:center;margin-top:1rem;color:var(--green-light);font-size:0.9rem;">✅ Message sent! We'll be in touch soon.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- FOOTER -->
 <footer>
-  &copy; 2025 Odoraa. All Rights Reserved. ✨ Made by KJ
+  <div class="footer-inner">
+    <div class="footer-logo">Odor<span>aa</span></div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home-page');return false;">Home</a>
+      <a href="#" onclick="showPage('products-page');return false;">Shop</a>
+      <a href="#" onclick="showPage('about-page');return false;">About</a>
+      <a href="#" onclick="showPage('faq-page');return false;">FAQs</a>
+      <a href="#" onclick="showPage('contact-page');return false;">Contact</a>
+      <a href="mailto:heyodoraa@gmail.com">heyodoraa@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Odoraa. All rights reserved. | Natural Odor Elimination, Sustainably Made.</p>
+  </div>
 </footer>
 
+<script>
+  // PRODUCTS DATA
+  const products = [
+    {
+      name: "Shoe Odoraa",
+      emoji: "👟",
+      badge: "Best Seller",
+      desc: "Lemongrass-scented natural pouches designed specifically for shoes — eliminates sweat odor and keeps footwear fresh.",
+      benefits: ["Lemongrass-scented for natural freshness", "Removes sweat and shoe odor effectively", "Solar-rechargeable — reuse month after month"],
+      pack: "Pack: 1 Pair (2 Pouches)",
+      link: "#"
+    },
+    {
+      name: "Home Care Kit",
+      emoji: "🏠",
+      badge: "Most Popular",
+      desc: "The all-in-one kit covering every problem area in your home — trash drawers, bathrooms, shoes, and closets.",
+      benefits: ["Multi-use: trash, bathroom, shoes, closets", "Ideal for small spaces and daily use", "Complete freshness solution in one box"],
+      pack: "Pack: Multi-Pack Kit",
+      link: "#"
+    },
+    {
+      name: "Odoraa for Black Trash Can",
+      emoji: "🗑️",
+      badge: "3 Month Life",
+      desc: "Specifically formulated for black trash cans, eliminating strong garbage odors at the source.",
+      benefits: ["Eliminates strong garbage odors", "Compact and fits any trash can size", "Lasts up to 3 months per cycle"],
+      pack: "Pack: Single Pouch (100g)",
+      link: "#"
+    },
+    {
+      name: "Odoraa for Kitchen Trash Drawer",
+      emoji: "🍽️",
+      badge: "Kitchen Fresh",
+      desc: "Designed for kitchen trash drawers where food waste smells accumulate — keeps your kitchen smelling clean.",
+      benefits: ["Neutralizes food waste smells", "Fits neatly inside any drawer", "Keeps kitchen fresh around the clock"],
+      pack: "Pack: Single Pouch",
+      link: "#"
+    },
+    {
+      name: "Odoraa for Kitchen",
+      emoji: "🍳",
+      badge: "Cooking Odors",
+      desc: "Tackles tough cooking odors like curry, fish, and garlic — keeping your kitchen space fresh and inviting.",
+      benefits: ["Removes persistent cooking odors", "Keeps cooking space fresh and clean", "Safe around food and countertops"],
+      pack: "Pack: Single Pouch (100g)",
+      link: "#"
+    },
+    {
+      name: "Odoraa for Restrooms",
+      emoji: "🚿",
+      badge: "Moisture Safe",
+      desc: "Built for bathrooms and bins — works effectively even in high-humidity, moisture-prone environments.",
+      benefits: ["Freshens bathrooms and waste bins", "Works in moisture-prone environments", "Long-lasting bathroom freshness"],
+      pack: "Pack: Single Pouch",
+      link: "#"
+    },
+    {
+      name: "Odoraa for Pets",
+      emoji: "🐾",
+      badge: "Pet Safe",
+      desc: "Controls odor in litter areas, pet beds, and pet zones — completely safe for animals and humans alike.",
+      benefits: ["Controls litter and pet bed odors", "100% safe for pets of all kinds", "Long-lasting freshness in pet areas"],
+      pack: "Pack: Single or 2-Pack",
+      link: "#"
+    }
+  ];
+
+  // FAQS DATA
+  const faqs = [
+    {
+      q: "How long does one 100g Odoraa pack last?",
+      a: "Each 100g Odoraa pack lasts up to 3 months with regular solar recharging (the shoe pouch lasts approximately 1 month). Simply place in direct sunlight once a month to rejuvenate."
+    },
+    {
+      q: "How many pouches should I use for my space?",
+      a: "For small spaces (shoe, small drawer): 1–2 pouches. For medium spaces (bathroom, mid-size room): 2–3 pouches. For large spaces (garage, large room): 3–4 pouches."
+    },
+    {
+      q: "What types of odors does Odoraa eliminate?",
+      a: "Odoraa effectively eliminates a wide range of odors including trash and garbage smells, food and cooking odors, bathroom and moisture odors, pet and litter odors, shoe and sweat odors, and general musty or stale smells."
+    },
+    {
+      q: "Is Odoraa safe for pets and kids?",
+      a: "Yes! Odoraa is made with natural, non-toxic ingredients and is completely safe for use around babies, children, and pets of all kinds. No harsh chemicals, no harmful fumes."
+    },
+    {
+      q: "How do I recharge my Odoraa pouch?",
+      a: "Simply place your Odoraa pouch in direct sunlight for 2–3 hours once a month. The solar energy rejuvenates the natural formula, extending its effectiveness for another full month of use."
+    },
+    {
+      q: "Where can I use Odoraa?",
+      a: "Odoraa is versatile and effective in kitchens, restrooms and bathrooms, closets and wardrobes, trash cans and drawers, shoe racks and gym bags, pet areas and litter boxes, cars, and any small enclosed space."
+    },
+    {
+      q: "Is Odoraa eco-friendly?",
+      a: "Absolutely. Odoraa is reusable for months, solar-powered, made with natural ingredients, and produces no chemical waste — making it one of the most sustainable odor solutions available."
+    },
+    {
+      q: "How is Odoraa different from charcoal bags?",
+      a: "Odoraa is more effective and longer-lasting than traditional activated charcoal bags. It actively eliminates odors rather than just absorbing them, and the solar recharging system keeps it working at full power much longer."
+    }
+  ];
+
+  function renderProducts(containerId, limit) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const items = limit ? products.slice(0, limit) : products;
+    container.innerHTML = items.map(p => `
+      <div class="product-card fade-in">
+        <div class="product-img">
+          ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+          <span>${p.emoji}</span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+          <ul class="product-benefits">
+            ${p.benefits.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+          <span class="product-pack">📦 ${p.pack}</span>
+          <div class="product-footer">
+            <a href="${p.link}" class="btn-buy" target="_blank" rel="noopener">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    observeFadeIns();
+  }
+
+  function renderFAQs(containerId, limit) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const items = limit ? faqs.slice(0, limit) : faqs;
+    container.innerHTML = items.map((f, i) => `
+      <div class="faq-item" id="faq-${containerId}-${i}">
+        <button class="faq-question" onclick="toggleFAQ('faq-${containerId}-${i}')">
+          <span>${f.q}</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>${f.a}</p></div>
+      </div>
+    `).join('');
+  }
+
+  function toggleFAQ(id) {
+    const item = document.getElementById(id);
+    const isOpen = item.classList.contains('open');
+    // Close all in same container
+    const parent = item.parentElement;
+    parent.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page = document.getElementById(pageId);
+    if (page) {
+      page.style.display = 'block';
+      page.classList.add('active');
+    }
+    // Hide other pages
+    document.querySelectorAll('.page').forEach(p => {
+      if (p.id !== pageId) p.style.display = 'none';
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Render products on their pages
+    if (pageId === 'products-page') renderProducts('products-grid-full', 0);
+    observeFadeIns();
+    // Close mobile menu
+    document.getElementById('nav-links').classList.remove('open');
+  }
+
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+
+  function handleFormSubmit() {
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(() => document.getElementById('form-success').style.display = 'none', 4000);
+  }
+
+  // Scroll-triggered fade-in
+  function observeFadeIns() {
+    const els = document.querySelectorAll('.fade-in:not(.visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(el => observer.observe(el));
+    } else {
+      els.forEach(el => el.classList.add('visible'));
+    }
+  }
+
+  // INIT
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts('products-grid-home', 6);
+    renderFAQs('faq-home', 4);
+    renderFAQs('faq-full', 0);
+    // Set all non-active pages display none
+    document.querySelectorAll('.page').forEach(p => {
+      if (!p.classList.contains('active')) p.style.display = 'none';
+    });
+    observeFadeIns();
+  });
+</script>
 </body>
 </html>
